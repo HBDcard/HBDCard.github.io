@@ -1,0 +1,202 @@
+/* Save as 'styles.css' */
+@keyframes rotate {
+  0% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateX(360deg) rotateY(360deg);
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+body {
+  background-color: #BEECCB;
+  font-family: 'Roboto', sans-serif;
+  font-weight: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+#greeting-container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  background-image: url('https://i.ibb.co/LrRNnGZ/pattern.png');
+  border-radius: 25px;
+  box-shadow: 0px 0px 40px 0px rgba(0,0,0,0.1);
+  overflow: visible;
+}
+
+#greeting-container section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  transform-origin: bottom center;
+  transform: rotateX(-25deg) rotateY(0deg);
+}
+
+#greeting-container section span {
+  position: absolute;
+  bottom: -1px;
+  width: 50%;
+  height: 50%;
+  background-color: #fff;
+  border-radius: 0 0 50% 50%/0 0 80% 80%;
+  filter: blur(100px);
+  opacity: 0.5;
+  transform: skewY(10deg);
+}
+
+#greeting-container section span::before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+  width: 100%;
+  height: 100%;
+  background-color: currentColor;
+  border-radius: inherit;
+  filter: blur(10px) contrast(0.5) saturate(1.5);
+  mask: linear-gradient(transparent 20%, black 80%), radial-gradient(at 50% 0%, transparent 70%, black 75%);
+  transform: scale(1.2) translateX(-5%) rotate(-15deg) skewY(15deg);
+}
+
+#greeting-container h1 {
+  color: #FFDAB2;
+  font-size: 4rem;
+  letter-spacing: -5px;
+  margin-bottom: 1rem;
+  text-shadow: 0px 0px 4px rgba(0,0,0,0.5);
+}
+
+#greeting-container button {
+  background-color: #FFDAB2;
+  border: none;
+  border-radius: 25px;
+  padding: 0.75rem 2rem;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#greeting-container button:hover {
+  transform: scale(1.05);
+}
+
+#greeting-container button:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+}
+
+.front {
+  background-image: url('https://i.ibb.co/z6QJVjM/birthday-background.jpg');
+  z-index: 1;
+}
+
+.front span {
+  animation: rotate 60s infinite cubic-bezier(0.215, 0.61, 0.355, 1.000);
+}
+
+.front span::before {
+  animation: slide 60s ease-in-out infinite alternate;
+}
+
+.front span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.front span:nth-child(2) {
+  animation-delay: 2s;
+}
+
+.front span:nth-child(3) {
+  animation-delay: 4s;
+}
+
+.front span:nth-child(4) {
+  animation-delay: 6s;
+}
+
+.front span:nth-child(5) {
+  animation-delay: 8s;
+}
+
+.back {
+  background-image: url('https://i.ibb.co/q5PWcGC/birthday-inside.jpg');
+  transform: rotateX(-25deg) rotateY(-90deg);
+  z-index: 2;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  backface-visibility: hidden;
+}
+
+.back span {
+  animation: rotate 60s infinite cubic-bezier(0.215, 0.61, 0.355, 1.000);
+}
+
+.back span::before {
+  animation: slide 60s ease-in-out infinite alternate;
+}
+
+.back span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.back span:nth-child(2) {
+  animation-delay: 2s;
+}
+
+.back span:nth-child(3) {
+  animation-delay: 4s;
+}
+
+.back span:nth-child(4) {
+  animation-delay: 6s;
+}
+
+.back span:nth-child(5) {
+  animation-delay: 8s;
+}
+
+#open-btn {
+  animation: fade-in 0.5s cubic-bezier(0.215, 0.61, 0.355, 1.000) 2s forwards;
+}
+
+#close-btn {
+  animation: fade-in 0.5s cubic-bezier(0.215, 0.61, 0.355, 1.000) forwards;
+  animation-delay: 1s;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
